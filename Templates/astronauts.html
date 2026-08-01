@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- <h2 class="page-title">
+    <i class="fa-solid fa-user-astronaut"></i>
+    Astronauts at ISS ({{ astronauts|length }})
+</h2> -->
+
+<div class="astronaut-section">
+
+    {% for astronaut in astronauts %}
+
+    <div class="astronaut-card">
+
+        <img src="{{ url_for('static', filename='images/' ~ astronaut.image) }}">
+
+        <h3>{{ astronaut.name }}</h3>
+
+        <p>{{ astronaut.agency }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

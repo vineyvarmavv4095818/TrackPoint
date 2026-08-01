@@ -1,0 +1,380 @@
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-color: #F5F7FA;
+
+    /* background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; */
+}
+
+
+.logo {
+    font-size: 40px;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    color: black;
+    /* background: linear-gradient(135deg, #6FD1D7, #3B7597);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+.subtitle{
+    font-size: 15px;
+    color: rgb(46, 46, 46);
+    position: absolute;
+    left: 70px;
+    top: 60px;
+    margin: 10px 0px;
+}
+
+.nav-butt {
+    
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    gap: 30px;
+    left:5px;
+    top: 115px;
+    align-items: center;
+    height: 460px;
+    width: 80px;
+    border-radius: 10px;
+    background-color: rgb(206, 206, 216);
+
+}
+
+.nav-butt a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #2563EB;
+    gap: 5px;
+}
+.nav-butt a:hover{
+    color: rgb(0, 0, 190);
+}
+
+.box1{
+    padding:0px;
+    position:absolute;
+    width: auto;
+    display:flex;
+    top: 115px;
+    color: #1F2937;
+    gap: 10px;
+    align-items:center;
+    font-weight: 700;
+    left: 95px;
+}
+.box2{
+    padding:0px;
+    position:absolute;
+    width: auto;
+    display:flex;
+    top: 285px;
+    color: #1F2937;
+    gap: 10px;
+    align-items:center;
+    font-weight: 700;
+    left: 95px;
+}
+.box3{
+    padding:0px;
+    position:absolute;
+    width: auto;
+    display:flex;
+    top: 453px;
+    color: #1F2937;
+    gap: 10px;
+    align-items:center;
+    font-weight: 700;
+    left: 95px;
+}
+
+.card {
+    padding-top: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 165px;
+    height: 100px;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    /* background-image: url("../images/ISS.jpg"); */
+    background-size: cover;
+    text-align: center;
+    font-size: 19px;
+}
+
+
+#latitude {
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(145, 145, 145);
+}
+#longitude {
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(145, 145, 145);
+}
+#altitude {
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(145, 145, 145);
+}
+#velocity {
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(145, 145, 145);
+}
+#visibility {
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(145, 145, 145);
+}
+#country {
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(145, 145, 145);
+}
+
+
+.navbar{
+    font-size: 20px;
+    display:flex;
+    width:1330px;
+    height:100px;
+    align-items: center;
+    margin-top: 5px;
+    background-color: rgb(206, 206, 216);
+    border-radius: 15px;
+    margin-left: 5px;
+}
+
+
+.navbar a {
+    color:rgb(219, 219, 219);
+    text-decoration:none;
+    padding:14px 18px;
+    border-radius:10px;
+    transition:.3s;
+    background: transparent;
+    display: block;
+}
+
+
+.live-info{
+    position: absolute;
+    right: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    color: rgb(0, 0, 0);
+    font-family:monospace;
+    gap: 20px;
+    font-size:15px;
+
+}
+
+.live {
+    position: absolute;
+    left: 280px;
+    color: red;
+    padding: 5px 0px;
+    height: auto;
+    width: 200px;
+    font-size: 20px;
+    font-family:serif;
+    font-weight: 700;
+
+}
+.live p{
+    margin: 0px;
+}
+
+.time-date {
+
+    padding: 5px 0px;
+    color: rgb(65, 64, 64);
+    height: auto;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    background-color: #ade460c2;
+    font-size: 20px;
+    font-family:serif;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.day {
+    padding: 5px 0px;
+    color: rgb(65, 64, 64);
+    height: auto;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    background-color: #ade460c2;
+    font-size: 20px;
+    font-family:serif;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* .live-info div{
+    font-size:15px;
+} */
+
+.right-panel{
+    position: absolute;
+    right: 10px;
+    top: 115px;
+    width:890px;
+    height:480px;
+}
+
+#map{
+    width:100%;
+    height:100%;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.leaflet-marker-icon{
+
+    filter: drop-shadow(0 0 10px black);
+    color: #EF4444;
+
+}
+
+/* h2 {
+    position: absolute;
+    left: 100px;
+    margin-top: 10px;
+    font-size: 30px;
+} */
+
+.astronaut-section{
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    gap: 30px;
+    
+    /* margin-top: 40px; */
+    position: absolute;
+    top: 115px;
+    left: 100px;
+}
+.astronaut-card{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 200px;
+    height: 230px;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    /* background-image: url("../images/ISS.jpg"); */
+    background-size: cover;
+    text-align: center;
+    font-size: 19px;
+}
+
+.astronaut-card img{
+    height:110px;
+    width:110px;
+    border-radius:50%;
+    margin-top:10px;
+}
+
+.astronaut-card h3{
+    font-size: 20px;
+    color:rgb(5, 5, 5);
+    margin: 20px 20px 5px 5px;
+
+}
+
+.astronaut-card p{
+    color:rgb(78, 78, 78);
+    margin-top: 0px;
+}
+
+
+.about-container{
+
+    width:80%;
+
+    margin:100px auto;
+
+    color:rgb(78, 78, 78);
+    display: grid;
+    grid-template-columns: repeat(5, 350px);
+    gap: 30px;
+
+}
+
+h1{
+    position: absolute;
+    left: 100px;
+    color:#2e2e2e;
+
+}
+
+.heading {
+    position: absolute;
+    left: 140px;
+    /* line-height:1.8; */
+    font-size:20px;
+    color: #3c3d3c;
+    top: 160px;
+
+}
+
+.about-card{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    background:#FFFFFF;
+
+    padding:20px;
+
+    margin-top:25px;
+
+}
+
+.about-card h2{
+
+    color:rgb(5, 5, 5);
+    margin-top:5px;
+    margin-bottom:25px;
+
+}
+
+.about-card ul{
+
+    padding-left:20px;
+
+}
+
+.about-card li{
+
+    margin-bottom:10px;
+    font-size: 18px;
+
+}

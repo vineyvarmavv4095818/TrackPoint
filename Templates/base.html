@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>TrackPoint</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Story+Script&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <i class="fa-solid fa-earth-americas"
+    style="color:rgb(109,109,128);font-size:40px;margin-bottom:20px;margin-left:10px;"></i>
+
+    <div class="logo">
+        TrackPoint
+    </div>
+
+    <p class="subtitle">
+        ISS Real-Time Tracker
+    </p>
+
+    <div class="live">
+        <p>
+            <i class="fa-regular fa-circle-dot" style="color:red;"></i>
+            Live
+        </p>
+    </div>
+
+    <div class="live-info">
+
+        <div class="time-date">
+            <div id="utc-time"></div>
+            <div id="utc-date"></div>
+        </div>
+
+        <div class="day">
+            <div id="iss-status"></div>
+            <div id="utc-day"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="nav-butt">
+
+    <a href="/">
+        <i class="fa-solid fa-house-chimney"></i>
+        Home
+    </a>
+
+    <a href="/astronauts">
+        <i class="fa-solid fa-user-astronaut"></i>
+        Astronauts
+    </a>
+
+    <a href="/about">
+        <i class="fa-solid fa-circle-info"></i>
+        About
+    </a>
+
+</div>
+
+<!-- Yahan har page ka content aayega -->
+
+{% block content %}
+
+{% endblock %}
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+<script src="{{ url_for('static', filename='JS/clock.js') }}"></script>
+
+
+{% block scripts %}
+
+{% endblock %}
+
+</body>
+
+</html>

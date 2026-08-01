@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="right-panel">
+    <div id="map"></div>
+</div>
+
+<div class="box1">
+    <div class="card">
+        <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 167);"></i>
+        Latitude :
+        <p id="latitude">{{ latitude }}</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 167);"></i>
+        Longitude :
+        <p id="longitude">{{ longitude }}</p>
+    </div>
+</div>
+
+<div class="box2">
+    <div class="card">
+        <i class="fa-solid fa-mountain-sun" style="color: rgb(0, 0, 167);"></i>
+        Altitude
+        <p id="altitude">{{ altitude }} km</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-gauge-high" style="color: rgb(0, 0, 167);"></i>
+        Velocity
+        <p id="velocity">{{ velocity }} km/h</p>
+    </div>
+</div>
+
+<div class="box3">
+    <div class="card">
+        <i class="fa-solid fa-eye" style="color: rgb(0, 0, 167);"></i>
+        Visibility
+        <p id="visibility">{{ visibility }}</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-globe" style="color: rgb(0, 0, 167);"></i>
+        Current
+        <br>
+        Country:
+        <p id="country">{{ country }}</p>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+const latitude = Number('{{ latitude }}');
+const longitude = Number('{{ longitude }}');
+
+</script>
+
+<script src="{{ url_for('static', filename='JS/script.js') }}"></script>
+
+{% endblock %}
