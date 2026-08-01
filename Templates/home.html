@@ -8,13 +8,13 @@
 
 <div class="box1">
     <div class="card">
-        <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 167);"></i>
+        <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
         Latitude :
         <p id="latitude">{{ latitude }}</p>
     </div>
 
     <div class="card">
-        <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 167);"></i>
+        <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
         Longitude :
         <p id="longitude">{{ longitude }}</p>
     </div>
@@ -22,13 +22,13 @@
 
 <div class="box2">
     <div class="card">
-        <i class="fa-solid fa-mountain-sun" style="color: rgb(0, 0, 167);"></i>
+        <i class="fa-solid fa-mountain-sun" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
         Altitude
         <p id="altitude">{{ altitude }} km</p>
     </div>
 
     <div class="card">
-        <i class="fa-solid fa-gauge-high" style="color: rgb(0, 0, 167);"></i>
+        <i class="fa-solid fa-gauge-high" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
         Velocity
         <p id="velocity">{{ velocity }} km/h</p>
     </div>
@@ -36,13 +36,13 @@
 
 <div class="box3">
     <div class="card">
-        <i class="fa-solid fa-eye" style="color: rgb(0, 0, 167);"></i>
+        <i class="fa-solid fa-eye" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
         Visibility
         <p id="visibility">{{ visibility }}</p>
     </div>
 
     <div class="card">
-        <i class="fa-solid fa-globe" style="color: rgb(0, 0, 167);"></i>
+        <i class="fa-solid fa-globe" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
         Current
         <br>
         Country:
@@ -59,6 +59,8 @@
 
 const latitude = Number('{{ latitude }}');
 const longitude = Number('{{ longitude }}');
+
+const issIconUrl = "{{ url_for('static', filename='Images/iss-marker.png') }}";
 
 </script>
 

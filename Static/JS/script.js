@@ -19,15 +19,22 @@ setTimeout(() => {
 // 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
 // ).addTo(map);
 
+const issIcon = L.icon({
+    iconUrl: issIconUrl,
+    iconSize: [50, 50],
+    iconAnchor: [25, 25],
+    popupAnchor: [0, -25]
+});
 
-
-const marker = L.marker([latitude, longitude]).addTo(map);
+const marker = L.marker([latitude, longitude], {
+    icon: issIcon
+}).addTo(map);
 
 marker.bindPopup("🛰 ISS");
 let issPath = [];
 const orbitLine = L.polyline([],{
 
-    color:"#00ff55",
+    color:"#00b43c",
 
     weight:3,
 
