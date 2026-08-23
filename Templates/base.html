@@ -2,27 +2,14 @@
 <html>
 
 <head>
-
     <title>TrackPoint</title>
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <link rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}">
-
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet"href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
-        rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Story+Script&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Story+Script&display=swap"rel="stylesheet">
 </head>
 
 <body>
@@ -88,6 +75,33 @@
 
 </div>
 
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h3>🛰️ TrackPoint</h3>
+            <p>ISS Real-Time Tracker</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="#">Astronauts</a>
+            <a href="#">About</a>
+        </div>
+
+        <div class="footer-info">
+            <p>Powered by Where The ISS API & Leaflet</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 TrackPoint. Built for Space Exploration.</p>
+    </div>
+
+</footer>
+
 <!-- Yahan har page ka content aayega -->
 
 {% block content %}
@@ -95,14 +109,14 @@
 {% endblock %}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-
 <script src="{{ url_for('static', filename='JS/clock.js') }}"></script>
 
 
 {% block scripts %}
 
 {% endblock %}
+
+
 
 </body>
 

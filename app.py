@@ -13,7 +13,6 @@ def home():
 
     url = "https://api.wheretheiss.at/v1/satellites/25544"
     response = requests.get(url)
-    # response = requests.get(url, verify=False, timeout=10)
     data = response.json()
     latitude = round(data['latitude'],2)
     longitude = round(data['longitude'],2)
@@ -70,8 +69,6 @@ def iss_data():
 
     response = requests.get(url)
 
-    # response = requests.get(url, verify=False)
-
     data = response.json()
 
     latitude = round(data["latitude"],2)
@@ -83,13 +80,9 @@ def iss_data():
     return jsonify({
 
         "latitude": latitude,
-
         "longitude": longitude,
-
         "altitude": altitude,
-
         "velocity": velocity,
-
         "visibility": visibility
 
     })
