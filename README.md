@@ -1,65 +1,41 @@
-<div align="center">
+# 🛰️ TrackPoint: ISS Real-Time Tracker
 
-# 🛰️ TrackPoint
+**TrackPoint** is a Flask web app that shows where the International Space Station is right now. It follows the station over an interactive dark world map, reports live telemetry, names the country below it, and lists the astronauts currently in space.
 
-### Real-time International Space Station tracker
-
-Watch the ISS move across the world map, see where it is right now, and meet the astronauts on board.
-
-![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-Backend-000000?logo=flask&logoColor=white)
-![Leaflet](https://img.shields.io/badge/Leaflet.js-Map-199900?logo=leaflet&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=black)
-![Status](https://img.shields.io/badge/Status-Live%20Data-brightgreen)
-
-</div>
-
----
-
-## 📸 Preview
-
-> Add your screenshots to a `screenshots/` folder and update the paths below.
-
-| Dashboard | Astronauts |
-|-----------|------------|
-| ![Dashboard](screenshots/dashboard.png) | ![Astronauts](screenshots/astronauts.png) |
+The ISS travels at about 27,600 km/h and circles the Earth roughly every 92 minutes. TrackPoint updates its position every 5 seconds.
 
 ---
 
 ## ✨ Features
 
-- 🌍 **Live ISS position** on an interactive dark world map, refreshed every 5 seconds
-- 🛤️ **Orbit trail** showing the ISS's recent movement, with correct handling of the 180° longitude line
-- 🔮 **Upcoming path** drawn as a dashed line, with a card for each predicted position and the country it will pass over
-- 📍 **Live telemetry:** latitude, longitude, altitude and velocity
-- 👁️ **Visibility status** (daylight or night) and a matching sun or moon indicator
-- 🌎 **Country detection:** shows which country or ocean the ISS is flying over
-- 👨‍🚀 **Astronauts page** with name, agency badge and photo, plus filtering by agency
-- 🕒 **UTC clock** with date and day in the navbar
-- 📡 **Connection indicator** that shows when an API request fails and retries automatically
-- 📱 **Responsive design** that works on desktop, tablet and phone
-- 🎨 **Mission-control dark theme** built with custom CSS
+- 🌍 **Live ISS tracking** on an interactive Leaflet map with a glowing station marker
+- 🛤️ **Orbit trail** showing the station's recent path, drawn correctly across the 180° meridian
+- 🔮 **Upcoming orbit path** drawn as a dashed line, with a card for each predicted position
+- 📍 **Live telemetry:** latitude, longitude, altitude, velocity and visibility (daylight or night)
+- 🏳️ **Country detection:** shows the country the ISS is flying over, or "Ocean / International Waters"
+- 👨‍🚀 **Astronauts page** with agency badges, agency filters and initials avatars for missing photos
+- 🕒 **UTC clock** and a daylight/night indicator in the navbar
+- 📡 **Connection status badge** that shows when an API request fails and keeps retrying
+- 📱 **Responsive layout** that works on desktop, tablet and phone
 
 ---
 
-## 🛠️ Tech Stack
+## 🧰 Tech Stack
 
-| Layer | Technologies |
-|-------|--------------|
-| Frontend | HTML5, CSS3, JavaScript, Leaflet.js, Font Awesome |
-| Backend | Python, Flask, Jinja2 |
-| APIs | Where The ISS At, OpenStreetMap Nominatim, N2YO |
-| Tools | Git, GitHub, Virtual Environment (venv) |
+| Layer | Technology |
+|-------|------------|
+| Backend | Python, Flask, Requests |
+| Frontend | HTML5, CSS3, JavaScript, Jinja2 templates |
+| Map | Leaflet.js with dark map tiles |
+| Icons and fonts | Font Awesome, Chakra Petch, IBM Plex Sans |
 
----
+### 🔌 APIs Used
 
-## 🔌 APIs Used
-
-| API | Used for | API key |
-|-----|----------|---------|
-| [Where The ISS At](https://wheretheiss.at/w/developer) | Live position, altitude, velocity, visibility | Not required |
-| [OpenStreetMap Nominatim](https://nominatim.org/) | Reverse geocoding to find the country | Not required |
-| [N2YO](https://www.n2yo.com/api/) | Upcoming ISS positions | **Required (free)** |
+| API | Purpose | Key needed |
+|-----|---------|------------|
+| Where The ISS At | Live position, altitude, velocity, visibility | No |
+| OpenStreetMap Nominatim | Reverse geocoding (country below the ISS) | No |
+| N2YO | Upcoming ISS positions | Yes (free) |
 
 ---
 
@@ -68,42 +44,61 @@ Watch the ISS move across the world map, see where it is right now, and meet the
 ```text
 ISS-Tracker/
 │
-├── app.py                 # Flask app and API routes
-├── astronauts.py          # Astronaut data
+├── app.py                  # Flask app and API routes
+├── astronauts.py           # Astronaut data (name, agency, image)
 ├── requirements.txt
 ├── .gitignore
 │
 ├── templates/
-│   ├── base.html          # Shared layout (navbar, footer)
-│   ├── home.html          # Map and live dashboard
-│   ├── astronauts.html    # Astronaut cards
-│   └── about.html
+│   ├── base.html           # Shared layout (navbar, footer)
+│   ├── home.html           # Map, telemetry, upcoming positions
+│   ├── astronauts.html     # Astronaut cards and filters
+│   └── about.html          # About page
 │
 └── static/
     ├── css/
-    │   └── style.css
+    │   └── style.css       # Theme and layout
     ├── JS/
-    │   ├── script.js      # Map, live updates, upcoming path
-    │   └── clock.js       # UTC clock
-    └── images/            # ISS marker and astronaut photos
+    │   ├── script.js       # Map, live updates, trail, upcoming path
+    │   └── clock.js        # UTC clock
+    └── images/             # ISS marker and astronaut photos
 ```
+
+---
+
+## 🛣️ Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | Dashboard with live map and telemetry |
+| `/astronauts` | Astronauts currently in space |
+| `/about` | About the project |
+| `/iss-data` | JSON: live position, telemetry and country |
+| `/iss-upcoming` | JSON: predicted upcoming ISS positions with locations |
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the repository
+### 1. Prerequisites
 
-```bash
-git clone https://github.com/YOUR-USERNAME/ISS-Tracker.git
-cd ISS-Tracker
-```
+- Python 3.9 or newer
+- pip
+- A free N2YO API key (needed only for the upcoming-positions section)
 
-### 2. Create a virtual environment
+### 2. Download the project
+
+Download or clone the repository, then open a terminal in the project folder.
+
+### 3. Create a virtual environment (recommended)
 
 ```bash
 python -m venv venv
+```
 
+Activate it:
+
+```bash
 # Windows
 venv\Scripts\activate
 
@@ -111,109 +106,111 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### 3. Install dependencies
+### 4. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Get a free N2YO API key
+If you don't have a `requirements.txt` yet, create one containing:
 
-1. Register at [n2yo.com](https://www.n2yo.com/login/)
-2. Log in and open your [profile page](https://www.n2yo.com/login/edit/)
-3. Scroll down and generate your API key
+```text
+Flask
+requests
+```
 
-### 5. Set the API key
+### 5. Get an N2YO API key
 
-The key is read from an environment variable, so it never goes into the code.
+1. Register a free account on the N2YO website.
+2. Log in and open your profile page.
+3. Scroll to the bottom and click the button that generates an API key.
+4. Copy the key. It can't be changed later, so keep it private.
+
+### 6. Set the API key
+
+The key is read from an environment variable named `N2YO_API_KEY`, so it never goes in your code.
 
 ```bash
-# Windows (PowerShell)
+# Windows PowerShell
 $env:N2YO_API_KEY="your-key-here"
 
-# Windows (Command Prompt)
+# Windows Command Prompt
 set N2YO_API_KEY=your-key-here
 
 # macOS / Linux
 export N2YO_API_KEY="your-key-here"
 ```
 
-### 6. Run the app
+The variable only lasts for the current terminal window, so set it again in each new one.
+
+### 7. Run the app
 
 ```bash
 python app.py
 ```
 
-Open **http://127.0.0.1:5000** in your browser.
-
-> The live map, stats and astronauts page work without the N2YO key. Only the upcoming path section needs it.
+Open `127.0.0.1:5000` in your browser.
 
 ---
 
-## 🌐 Routes
+## 🔐 Security Notes
 
-| Route | Description |
-|-------|-------------|
-| `/` | Dashboard with the live map and ISS telemetry |
-| `/astronauts` | Astronauts currently in space |
-| `/about` | About the project |
-| `/iss-data` | JSON: live position, altitude, velocity, visibility and country |
-| `/iss-upcoming` | JSON: upcoming ISS positions with locations |
+- Never commit your API key to GitHub.
+- Add `venv/` and any `.env` files to `.gitignore`.
+- If a key is ever pasted into public code, contact N2YO and ask for a replacement.
 
 ---
 
-## 👨‍🚀 Updating the Astronauts
+## 🛠️ Troubleshooting
 
-Astronauts are stored in `astronauts.py`. To update the crew, edit the list and add each photo to `static/images/`:
+| Problem | Fix |
+|---------|-----|
+| Upcoming positions show an error | Check that `N2YO_API_KEY` is set in the same terminal that runs Flask |
+| Map tiles show an "API KEY REQUIRED" watermark | The tile provider now requires a key. Switch to a keyless tile source or add a free tile key in `script.js`, then hard refresh with Ctrl+F5 |
+| Images don't load on Linux hosting | Folder names are case-sensitive. Use `static/images/` and `static/JS/` exactly |
+| "Connection lost" badge appears | An API is slow or down. The app retries automatically |
+| Country shows "Unknown" | Nominatim limits requests. Wait a moment and it will recover |
+
+---
+
+## 👨‍🚀 Updating the Astronaut List
+
+Crews rotate every few months. Edit `astronauts.py` and add each person's name, agency and image filename, then put the photo in `static/images/`:
 
 ```python
-{
-    "name": "Astronaut Name",
-    "agency": "NASA",
-    "image": "pic1.jpg"
-}
+{"name": "Full Name", "agency": "NASA", "image": "pic1.jpg"}
 ```
 
----
-
-## 🔒 Security Notes
-
-- Never commit your API key. Use the `N2YO_API_KEY` environment variable.
-- Keep `venv/` and any `.env` file in `.gitignore`.
-- Nominatim allows about one request per second. TrackPoint caches country lookups to stay within that limit.
+If a photo is missing, the card shows the person's initials instead.
 
 ---
 
 ## 🔮 Future Improvements
 
-- Fetch the astronaut list automatically from a live API
-- Visible pass predictions for the user's own location
-- Light and dark theme toggle
-- Historical orbit playback
-- Deployment on Render or PythonAnywhere
-
----
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome. Fork the repository, create a branch, and open a pull request.
+- Automatically fetch the current crew instead of using a fixed list
+- Show visible-pass predictions for the user's own location
+- Add a day/night shadow overlay on the map
+- Add a light theme and a theme toggle
+- Save a history of the ISS path
+- Deploy to a cloud host
 
 ---
 
 ## 🙏 Acknowledgements
 
-- [Where The ISS At](https://wheretheiss.at/) for live ISS telemetry
-- [N2YO](https://www.n2yo.com/) for satellite position data
-- [OpenStreetMap](https://www.openstreetmap.org/) and Nominatim for map data and reverse geocoding
-- [Leaflet](https://leafletjs.com/) for the interactive map
-- [Font Awesome](https://fontawesome.com/) for icons
+- Where The ISS At for live telemetry data
+- N2YO for satellite position predictions
+- OpenStreetMap and Nominatim for geocoding
+- Leaflet.js for the interactive map
+- The astronauts and ground crews who keep the ISS running
 
 ---
 
-<div align="center">
+## 👤 Author
 
-Made with ❤️ by [YOUR-NAME](https://github.com/YOUR-USERNAME)
+**VINAY VERMA**
+Built with Python, Flask and curiosity about space. 🚀
 
-⭐ If you like this project, give it a star!
+---
 
-</div>
+⭐ If you like this project, give it a star.
