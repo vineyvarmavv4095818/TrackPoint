@@ -209,7 +209,6 @@ If a photo is missing, the card shows the person's initials instead.
 ## 👤 Author
 
 **VINAY VERMA**
-Built with Python, Flask and curiosity about space. 🚀
 
 ---
 
