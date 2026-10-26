@@ -1,28 +1,41 @@
 {% extends "base.html" %}
-
+{% block title %}Astronauts · TrackPoint{% endblock %}
 {% block content %}
 
-<h2 class="page-title">
-    <i class="fa-solid fa-user-astronaut" style="color: darkgrey;"></i>
-    Astronauts in space ({{ astronauts|length }})
-</h2>
-
-<div class="astronaut-section">
-
-    {% for astronaut in astronauts %}
-
-    <div class="astronaut-card">
-
-        <img src="{{ url_for('static', filename='images/' ~ astronaut.image) }}">
-
-        <h3>{{ astronaut.name }}</h3>
-
-        <p>{{ astronaut.agency }}</p>
-
-    </div>
-
-    {% endfor %}
-
+<div class="block-head">
+    <h1 class="page-title"><i class="fa-solid fa-user-astronaut"></i> Astronauts in space ({{ astronauts|length }})</h1>
 </div>
 
+<div class="filters" id="filters">
+    <button class="chip on" data-agency="all">All</button>
+    {% for a in astronauts|map(attribute='agency')|unique %}
+    <button class="chip" data-agency="{{ a }}">{{ a }}</button>
+    {% endfor %}
+</div>
+
+<div class="astronaut-section">
+    {% for astronaut in astronauts %}
+    <article class="astronaut-card" data-agency="{{ astronaut.agency }}">
+        <div class="avatar">
+            <span>{{ (astronaut.name.split()|map('first')|join(''))[:2] }}</span>
+            <img src="{{ url_for('static', filename='images/' ~ astronaut.image) }}" alt="Portrait of {{ astronaut.name }}" onerror="this.remove()">
+        </div>
+        <h3>{{ astronaut.name }}</h3>
+        <p class="agency a-{{ astronaut.agency|lower }}">{{ astronaut.agency }}</p>
+    </article>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('filters').addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b));
+    document.querySelectorAll('.astronaut-card').forEach(c => {
+        c.hidden = b.dataset.agency !== 'all' && c.dataset.agency !== b.dataset.agency;
+    });
+});
+</script>
 {% endblock %}

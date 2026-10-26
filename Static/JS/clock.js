@@ -1,39 +1,12 @@
-function updateClock(){
-
+function updateClock() {
     const now = new Date();
-
-
-    const time = now.toLocaleTimeString("en-GB",{
-        timeZone:"UTC",
-        hour12:false
-    });
-
-
-    const date = now.toLocaleDateString("en-GB",{
-        timeZone:"UTC"
-    });
-
-
-    const day = now.toLocaleDateString("en-US",{
-        weekday:"long",
-        timeZone:"UTC"
-    });
-
-
-    document.getElementById("utc-time").innerHTML =
-    `<i class="fa-solid fa-clock" style="color:blue"></i> UTC : ${time}`;
-
-
-    document.getElementById("utc-date").innerHTML =
-    `<i class="fa-solid fa-calendar-days"></i> ${date}`;
-
-
-    document.getElementById("utc-day").innerHTML =
-    `<i class="fa-solid fa-calendar-week"></i> ${day}`;
-
+    const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+    const time = now.toLocaleTimeString("en-GB", { timeZone: "UTC", hour12: false });
+    const date = now.toLocaleDateString("en-GB", { timeZone: "UTC" });
+    const day = now.toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" });
+    set("utc-time", `<i class="fa-solid fa-clock"></i> UTC ${time}`);
+    set("utc-date", `<i class="fa-solid fa-calendar-days"></i> ${date}`);
+    set("utc-day", `<i class="fa-solid fa-calendar-week"></i> ${day}`);
 }
-
-
 updateClock();
-
-setInterval(updateClock,1000);
+setInterval(updateClock, 1000);

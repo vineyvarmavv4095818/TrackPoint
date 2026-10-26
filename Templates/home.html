@@ -1,69 +1,55 @@
 {% extends "base.html" %}
-
 {% block content %}
 
-<div class="right-panel">
+<section class="hero">
     <div id="map"></div>
-</div>
+    <aside class="telemetry" aria-label="ISS live telemetry">
+        <div class="tel-head">
+            <h1>ISS right now</h1>
+            <span id="conn" class="conn ok">Connected</span>
+        </div>
+        <div class="stats">
+            <div class="stat"><span><i class="fa-solid fa-location-dot"></i> Latitude</span><p id="latitude">{{ latitude }}</p></div>
+            <div class="stat"><span><i class="fa-solid fa-location-dot"></i> Longitude</span><p id="longitude">{{ longitude }}</p></div>
+            <div class="stat"><span><i class="fa-solid fa-mountain-sun"></i> Altitude</span><p id="altitude">{{ altitude }} km</p></div>
+            <div class="stat"><span><i class="fa-solid fa-gauge-high"></i> Velocity</span><p id="velocity">{{ velocity }} km/h</p></div>
+            <div class="stat"><span><i class="fa-solid fa-eye"></i> Visibility</span><p id="visibility">{{ visibility }}</p></div>
+            <div class="stat wide"><span><i class="fa-solid fa-globe"></i> Flying over</span><p id="country">{{ country }}</p></div>
+        </div>
+    </aside>
+</section>
 
-<div class="box1">
-    <div class="card">
-        <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
-        Latitude :
-        <p id="latitude">{{ latitude }}</p>
+<section class="block">
+    <div class="block-head">
+        <h2>Next hour of orbit</h2>
+        <p>Where the ISS will be, one point every 5 minutes. Shown as a dashed line on the map.</p>
     </div>
+    <div id="passes-container" class="passes"><p class="muted">Loading upcoming positions…</p></div>
+</section>
 
-    <div class="card">
-        <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
-        Longitude :
-        <p id="longitude">{{ longitude }}</p>
+<section class="block">
+    <div class="block-head">
+        <h2>International Space Station</h2>
+        <span class="badge ok">Operational</span>
     </div>
-</div>
-
-<div class="box2">
-    <div class="card">
-        <i class="fa-solid fa-mountain-sun" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
-        Altitude
-        <p id="altitude">{{ altitude }} km</p>
+    <div class="facts">
+        <div><span>Satellite ID</span><strong>25544</strong></div>
+        <div><span>Orbit</span><strong>Low Earth Orbit</strong></div>
+        <div><span>Orbit period</span><strong>~92 minutes</strong></div>
+        <div><span>Crew capacity</span><strong>7</strong></div>
+        <div><span>Inclination</span><strong>~51.6°</strong></div>
+        <div><span>Launch date</span><strong>20 November 1998</strong></div>
     </div>
-
-    <div class="card">
-        <i class="fa-solid fa-gauge-high" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
-        Velocity
-        <p id="velocity">{{ velocity }} km/h</p>
-    </div>
-</div>
-
-<div class="box3">
-    <div class="card">
-        <i class="fa-solid fa-eye" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
-        Visibility
-        <p id="visibility">{{ visibility }}</p>
-    </div>
-
-    <div class="card">
-        <i class="fa-solid fa-globe" style="color: rgb(0, 0, 167); filter: drop-shadow(0 0 8px blue);"></i>
-        Current
-        <br>
-        Country:
-        <p id="country">{{ country }}</p>
-    </div>
-</div>
-
+    <div class="agencies"><span>NASA</span><span>Roscosmos</span><span>ESA</span><span>JAXA</span><span>CSA</span></div>
+</section>
 
 {% endblock %}
 
 {% block scripts %}
-
 <script>
-
 const latitude = Number('{{ latitude }}');
 const longitude = Number('{{ longitude }}');
-
-const issIconUrl = "{{ url_for('static', filename='Images/iss-marker.png') }}";
-
+const issIconUrl = "{{ url_for('static', filename='images/iss-marker.png') }}";
 </script>
-
 <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
-
 {% endblock %}
